@@ -1,0 +1,52 @@
+.profileDropDown {
+    position: fixed;
+    top: 75px;
+    right: 10px;
+    width: 250px;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 5px;
+}
+
+.profileDropDown__body {
+    padding: 15px;
+}
+
+.profileDropDown__row {
+    display: flex;
+}
+
+.profileDropDown__row > a {
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    font-weight: normal;
+
+}
+
+.profileDropDown__row > a:hover {
+    transition: all .4s;
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+
+.profileDropDown__row > span {
+    margin-right: 15px;
+    color: #b3b3b3;
+    font-weight: 800;
+    font-size: 26px;
+}
+
+.profileDropDown__signout {
+    border-top: 1px solid gray;
+    padding-bottom: 20px;
+    text-align: center;
+    padding-top: 10px;
+    color: #fff;
+}
+
+.profileDropDown__signout:hover {
+    transition: all .4s;
+    text-decoration: underline;
+    cursor: pointer;
+}
