@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./PlansScreen.css";
-import db from "../firebase";
-import { loadStripe } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
-import { addDoc, collection, doc, getDocs, query, setDoc, where, onSnapShot, onSnapshot, getFirestore, getDoc } from "firebase/firestore";
+import { addDoc, collection,  onSnapshot, getFirestore } from "firebase/firestore";
+import { getDbData, getSubsscription } from "../utils/commonFuncs";
 const PlansScreen = () => {
   const [products, setProducts] = useState([]);
 
@@ -12,16 +11,14 @@ const PlansScreen = () => {
   const [subscription, setSubscription] = useState(null)
 
   useEffect(()=> {
-    getSubsscription();
-
+    getSubsscription().then((data) => setSubscription(data));
   },[user.uid])
 
   useEffect(() => {
-    getDbData();
+    getDbData().then(data => setProducts(data));
   }, []);
 
   const loadCheckout = async (priceId, priceData) => {
-    console.log(user.uid);
     const db = getFirestore();
     const collectionRef = collection(db, "customers", user.uid, "checkout_sessions")
 
@@ -30,18 +27,6 @@ const PlansScreen = () => {
         success_url:window.location.origin,
         cancel_url:window.location.origin 
     })
-
-    // const docRef = doc(db, "customers", user.uid);
-    // const colRef = collection(docRef, "checkout_sessions");
-    // await addDoc(colRef, {
-    //   price: priceId,
-    //   success_url: window.location.origin,
-    //   cancel_url: window.location.origin,
-    // });
-
-    // onSnapShot(collection(db, "customers", user.id), (snap)=> {
-
-    // })
 
     onSnapshot(docRef,
        (snap) => {
@@ -57,45 +42,6 @@ const PlansScreen = () => {
     );
   };
 
- async function getSubsscription() {
-    const db = getFirestore();
-    await getDocs(collection(db, "customers", user.uid, "subscriptions")).then(querySnap => {
-        querySnap.forEach(async subs => {
-            console.log(subs.data())
-            setSubscription({
-                role: subs.data().role,
-                current_period_end: subs.data().current_period_end?.seconds,
-                current_period_start: subs.data().current_period_start?.seconds,
-            })
-        })
-    })
-
-    }
-
-  async function getDbData() {
-    const db = getFirestore()
-    const queryData = query(
-      collection(db, "products"),
-      where("active", "==", true)
-    );
-    const products = {};
-    const querySnapshot = await getDocs(queryData).then((querySnap) => {
-      querySnap.forEach(async (productDoc) => {
-        products[productDoc.id] = productDoc.data();
-        const prices = query(collection(productDoc.ref, "prices"));
-        const priceSnap = await getDocs(prices);
-        priceSnap.docs.forEach((price) => {
-          products[productDoc.id].prices = {
-            priceId: price.id,
-            priceData: price.data(),
-          };
-        });
-      });
-    });
-    setProducts(products);
-
-    console.log(subscription)
-  }
   return (
     <div className="plansScreen">
         {subscription && <p>Renewal date : {new Date(

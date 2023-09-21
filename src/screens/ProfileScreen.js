@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./ProfileScreen.css"
 import Nav from '../Nav'
 import { useSelector } from 'react-redux'
@@ -6,9 +6,21 @@ import { selectUser } from '../features/userSlice'
 import { auth } from '../firebase'
 import { Link } from 'react-router-dom'
 import PlansScreen from './PlansScreen'
+import { getDbData, getSubsscription } from '../utils/commonFuncs'
 
 const ProfileScreen = () => {
     const user = useSelector(selectUser)
+    const [subscription, setSubscription] = useState(null)
+
+    useEffect(() => {
+        getSubsData()
+    },[])
+
+    const getSubsData = async () => {
+        await getSubsscription().then((data) => setSubscription(data))
+    }
+
+
   return (
     <div className='profileScreen'>
         <Nav />
@@ -19,7 +31,7 @@ const ProfileScreen = () => {
                 <div className='profileScreen__details'>
                     <h2>{user.email}</h2>
                     <div className='profileScreen__plans'>
-                    <h3>Plans</h3>
+                    <h3>Plans : {subscription?.role.toUpperCase()}</h3>
                     <PlansScreen/>
                         <Link to="/"><button onClick={()=> auth.signOut()} className='profileScreen__signOut'>Sign Out</button></Link>
 

@@ -1,59 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./LoginScreen.css";
 import SignupScreen from "./SignupScreen";
 import FirstSection from "./loginScreen_sections/FirstSection";
+import SecondSection from "./loginScreen_sections/SecondSection";
 
 const LoginScreen = () => {
   const [signIn, setSignIn] = useState(false);
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    window.addEventListener('scroll',transitionNavBar);
+    return () => {
+        window.removeEventListener('scroll', transitionNavBar);
+    }
+}, [])
+
+  const transitionNavBar = () => {
+    if(window.scrollY > 100 ) {
+        setShow(true)
+    }
+    else {
+        setShow(false)
+    }
+}
   return (
     <div className="loginScreen">
       <div className="loginScreen__section loginScreen__section--mainSection">
         <div className="loginScreen__background">
-          <img
-            className="loginScreem__logo"
-            src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
-          />
-          <button
-            className="loginScreen__button"
-            onClick={() => setSignIn(true)}
-          >
-            Sign In
-          </button>
+          <div className={`nav ${show && 'nav__black'}`}>
+            <img
+              className="loginScreem__logo"
+              src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
+            />
+            <button
+              className="loginScreen__button"
+              onClick={()=>{window.scrollTo({top: 0, left: 0, behavior: 'smooth' })}}
+            >
+              Sign In
+            </button>
+          </div>
           <div className="loginScreen__gradient" />
         </div>
         <div className="loginScreen__body">
-          {signIn ? (
             <SignupScreen />
-          ) : (
-            <>
-              <div className="loginScreen__title">
-                <h1>The biggest Indian hits. The best Indian stories.</h1>
-                <h1>All streaming here.</h1>
-              </div>
-              <h2>Watch anywhere. Cancel at any time.</h2>
-              <h3>
-                Ready to watch? Enter your email to create or restart your
-                membership
-              </h3>
-              <div className="loginScreen__input">
-                <form>
-                  <input type="email" placeholder="Email address" />
-                  <button
-                    className="loginScreen__getStarted"
-                    onClick={() => setSignIn(true)}
-                  >
-                    Get Started &gt;{" "}
-                  </button>
-                </form>
-              </div>
-            </>
-          )}
         </div>
         <div className="loginScreen__partitionLine"></div>
       </div>
       <div className="loginScreen__section loginScreen__section--firstSection">
             <FirstSection />
             <div className="loginScreen__partitionLine"></div>
+      </div>
+      <div className="loginScreen__section loginScreen__section--secondSection">
+        <SecondSection />
+        <div className="loginScreen__partitionLine"></div>
       </div>
     </div>
   );

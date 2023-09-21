@@ -31,10 +31,10 @@ const Index = () => {
     const unsubscribe = auth.onAuthStateChanged(userAuth => {
       if(userAuth) {
         // Logged In
-        console.log(userAuth)
         dispatch(login({
           uid: userAuth.uid,
-          email: userAuth.email
+          email: userAuth.email,
+          displayName: userAuth.displayName
         }))
       }
       else {
