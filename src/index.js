@@ -18,6 +18,7 @@ import LoginScreen from "./screens/LoginScreen";
 import { auth } from "./firebase";
 import { login, logout, selectUser } from "./features/userSlice";
 import ProfileScreen from "./screens/ProfileScreen";
+import AuthProvider from "./AuthProvider";
 
 
 
@@ -60,7 +61,7 @@ const router = createBrowserRouter(
     },
     {
       path: "/profile",
-      element: <ProfileScreen />
+      element: <AuthProvider><ProfileScreen /></AuthProvider>
     }
   ]
 );
