@@ -3,6 +3,7 @@ import "./LoginScreen.css";
 import SignupScreen from "./SignupScreen";
 import FirstSection from "./loginScreen_sections/FirstSection";
 import SecondSection from "./loginScreen_sections/SecondSection";
+import { NETFLIX_LOGO } from "../utils/constants";
 
 const LoginScreen = () => {
   const [signIn, setSignIn] = useState(false);
@@ -30,7 +31,7 @@ const LoginScreen = () => {
           <div className={`nav ${show && 'nav__black'}`}>
             <img
               className="loginScreem__logo"
-              src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
+              src={NETFLIX_LOGO}
             />
             <button
               className="loginScreen__button"

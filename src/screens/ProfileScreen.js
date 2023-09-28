@@ -7,6 +7,7 @@ import { auth } from '../firebase'
 import { Link } from 'react-router-dom'
 import PlansScreen from './PlansScreen'
 import { getDbData, getSubsscription } from '../utils/commonFuncs'
+import { AVATAR_IMG } from '../utils/constants'
 
 const ProfileScreen = () => {
     const user = useSelector(selectUser)
@@ -27,7 +28,7 @@ const ProfileScreen = () => {
         <div className='profileScreen__body'>
             <h1>Edit Profile</h1>
             <div className='profileScreen__info'>
-                <img src='https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png' />
+                <img src={AVATAR_IMG} />
                 <div className='profileScreen__details'>
                     <h2>{user.email}</h2>
                     <div className='profileScreen__plans'>

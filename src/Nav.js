@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./Nav.css"
 import ProfileDropDown from './ProfileDropDown';
 import { Link } from 'react-router-dom';
+import { AVATAR_IMG, NAV_NETFLIX_LOGO } from './utils/constants';
 
 const Nav = () => {
 
@@ -32,8 +33,8 @@ const Nav = () => {
   return (
     <div className={`nav ${show && 'nav__black'}`}>
         <div className='nav__contents'>
-            <Link to="/"><img className='nav__logo' src='https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png' alt='' /></Link>
-            <img onClick={(e)=>handleDropdown(e)}  className='nav__avatar' src='https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'></img>
+            <Link to="/"><img className='nav__logo' src={NAV_NETFLIX_LOGO} alt='' /></Link>
+            <img onClick={(e)=>handleDropdown(e)}  className='nav__avatar' src={AVATAR_IMG}></img>
             {showDropdown ? <i className='nav__upIcon' /> : <i className='nav__downIcon' /> }
 
         </div>

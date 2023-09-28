@@ -4,6 +4,7 @@ import { auth } from "../firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword,  signInWithPopup, GoogleAuthProvider, getAuth, signInWithRedirect } from "firebase/auth";
 import { checkValidData } from "../utils/validate";
 import PasswordRules from "../utils/PasswordRules";
+import { GOOLGE_LOGO } from "../utils/constants";
 
 const SignupScreen = () => {
     const emailRef = useRef(null)
@@ -83,7 +84,7 @@ const SignupScreen = () => {
         <button type="submit" onClick={isSignIn ? signIn : register}>{isSignIn ? "Sign In" : "Sign Up"}</button>
         <div>
           <button onClick={(e)=>signInWithGoogle(e)} className="flex mt-6 items-center bg-white text-black rounded-md w-full">
-            <img className="p-2" width="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"></img>
+            <img className="p-2" width="50px" src={GOOLGE_LOGO}></img>
             <span className="ml-3">Login with Google</span>
           </button>
         </div>

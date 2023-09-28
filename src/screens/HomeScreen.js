@@ -4,8 +4,12 @@ import Nav from '../Nav'
 import Banner from '../Banner'
 import requests from '../Request'
 import Row from '../Row'
+import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 
 const HomeScreen = () => {
+
+  useNowPlayingMovies()
+
   return (
     <div className='homeScreen'>
         <Nav></Nav>
