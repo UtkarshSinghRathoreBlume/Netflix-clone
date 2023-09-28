@@ -26,7 +26,6 @@ const SignupScreen = () => {
         }
     
         createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value).then((authUser) => {
-            console.log(authUser)
         }).catch(err => {
             alert(err.message)
         })
@@ -39,7 +38,6 @@ const SignupScreen = () => {
           return
         }
         signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value).then((authUser) => {
-            console.log(authUser)
         }).catch(err => {
             alert(err.message)
         })
@@ -50,7 +48,6 @@ const SignupScreen = () => {
       const provider = new GoogleAuthProvider();
       const auth = getAuth();
       signInWithPopup(auth, provider).then((result) => {
-        console.log(result)
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;

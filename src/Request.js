@@ -1,6 +1,6 @@
-const API_KEY = "13d71b438d0f359217e094ee77864e07"
+export const API_KEY = "13d71b438d0f359217e094ee77864e07"
 
-const options = {
+export const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',

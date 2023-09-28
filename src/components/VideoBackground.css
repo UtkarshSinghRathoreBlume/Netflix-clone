@@ -1,0 +1,15 @@
+
+
+.videoBackground__video {
+    position: absolute;
+    width: 100%;
+    /* aspect-ratio: 16/9; */
+    top: 0;
+    height: 100%;
+    
+}
+.html5-video-container  > video {
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+}

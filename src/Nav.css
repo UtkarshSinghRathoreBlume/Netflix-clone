@@ -57,3 +57,38 @@
 .nav__black {
     background-color: #111;
 }
+
+.nav__search--input {
+    transition:width 0.45s ease-in;
+    border: none;
+    width: 0px;
+    background-color: black;
+    opacity: 0.5;
+    color: white;
+    border-radius: 5px;
+    margin-left: 50px;
+    
+    
+}
+
+.nav__search--btn {
+    transition: all 0.45s ease-in;
+    z-index: 99999;
+    top: 25px;
+}
+
+.nav__search--input:focus {
+    width: 320px;
+    border:none;
+    outline:1px solid white;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.nav__search--cross {
+
+}
+
+.moveToLeft {
+    right: 380px !important;
+}

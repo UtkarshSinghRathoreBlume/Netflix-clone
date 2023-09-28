@@ -16,24 +16,24 @@ const Banner = () => {
         return
     }
     else {
-         MainMovie = movies[0]
-        console.log(MainMovie)
+         MainMovie = movies[Math.floor(Math.random()*20)]
     }
 
-    const {original_title, overview} = MainMovie
+    const {original_title, overview, id} = MainMovie
+    
     
 
 
   return (
-    <header className='banner' >
+    <header className=' h-full w-screen aspect-video relative' >
         
 
         <VideoTitle title = {original_title} overview = {overview}/>
-        <VideoBackground/>
+        <VideoBackground movieId={id}/>
         
     
 
-    <div className='banner--fadeBottom' />
+    <div className='banner--fadeBottom absolute bottom-0' />
     </header>
   )
 }
