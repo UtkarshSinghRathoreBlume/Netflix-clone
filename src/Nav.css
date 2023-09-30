@@ -85,10 +85,15 @@
     padding-right: 50px;
 }
 
-.nav__search--cross {
-
+.nav__gptBtn {
+    background-color: #e50914;
+    font-size: 1rem;
+    color: #fff;
+    padding: 0px 15px;
+    border-radius: 5px;
+    
 }
 
 .moveToLeft {
-    right: 380px !important;
+    right: 520px !important;
 }

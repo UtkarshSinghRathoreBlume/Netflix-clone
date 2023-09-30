@@ -1,5 +1,10 @@
 import { collection, getDocs, query, where, getFirestore } from "firebase/firestore";
 import { auth } from "../firebase";
+import { API_KEY, options } from "../Request";
+import openai from "./openai";
+
+
+
 
 export async function getDbData() {
     const db = getFirestore()
@@ -25,6 +30,7 @@ export async function getDbData() {
   }
 
 
+
   export async function getSubsscription() {
     let subscription = {}
     const db = getFirestore();
@@ -39,6 +45,21 @@ export async function getDbData() {
     })
     return subscription
 
+    }
+
+    export const fetchAllMovies = async (searchQuery) => {
+      return await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchQuery}&include_adult=false&language=en-US&page=1`, options).then(data => data.json())
+    }
+
+    
+
+    export const gptResults = async (searchQuery) => {
+      const gptQuery = "Act as a movie recommendation system and suggest some movies for the query " +searchQuery+ ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya"
+      return await openai.chat.completions.create({
+        messages: [{ role: 'user', content: gptQuery }],
+        model: 'gpt-3.5-turbo',
+      });
+      
     }
 
 
