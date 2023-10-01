@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addNowPlayingMovies } from '../features/moviesSlice'
 import { useEffect } from 'react'
 import requests from '../Request'
@@ -9,8 +9,9 @@ import requests from '../Request'
 
 const useNowPlayingMovies = () => {
     const dispatch = useDispatch();
+    const nowPlayingMovies = useSelector((store) => store.movies.nowPlayingMovies)
     useEffect(()=> {
-        getNowPlayingMovies()
+        !nowPlayingMovies && getNowPlayingMovies()
     },[])
     
     const getNowPlayingMovies = async () => {

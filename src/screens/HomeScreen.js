@@ -17,9 +17,9 @@ const HomeScreen = () => {
     <div className='homeScreen'>
         <Nav></Nav>
         {!searchParams ? 
-        <>
+        <div className="md:mt-0 mt-48">
         <Banner />
-        <div className="-mt-32 relative z-20">
+        <div className="sm:-mt-32  relative z-20">
           
           <Row  
             title='Trending Now'
@@ -48,7 +48,7 @@ const HomeScreen = () => {
             title='Documentaries'
             fetchUrl={requests.fetchDocumentaries} />
         </div>
-        </>
+        </div>
         :
         <>
           <SearchPage />

@@ -1,10 +1,10 @@
-export const API_KEY = "13d71b438d0f359217e094ee77864e07"
+export const API_KEY = process.env.REACT_APP_API_KEY
 
 export const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer 13d71b438d0f359217e094ee77864e07'
+      Authorization: 'Bearer '+process.env.REACT_APP_API_KEY
     }
   };
 
