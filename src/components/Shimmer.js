@@ -1,13 +1,14 @@
 import React from 'react'
-
+import "./Shimmer.css"
 const Shimmer = () => {
   return (
     <div className='flex w-screen'>
-        <div className='h-36 w-32 bg-slate-500 mr-5'></div>
-        <div className='h-36 w-32 bg-slate-500 mr-5'></div>
-        <div className='h-36 w-32 bg-slate-500 mr-5'></div>
-        <div className='h-36 w-32 bg-slate-500 mr-5'></div>
-        <div className='h-36 w-32 bg-slate-500 mr-5'></div>
+        <div className='shimmer'></div>
+        <div className='shimmer'></div>
+        <div className='shimmer'></div>
+        <div className='shimmer'></div>
+        <div className='shimmer'></div>
+        <div className='shimmer'></div>
     </div>
   )
 }

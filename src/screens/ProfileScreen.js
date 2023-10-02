@@ -33,7 +33,7 @@ const ProfileScreen = () => {
                     <h2>{user.email}</h2>
                     <div className='profileScreen__plans'>
                     <h3>Plans : {subscription?.role.toUpperCase()}</h3>
-                    <PlansScreen/>
+                    <PlansScreen className="plansScreen__container"/>
                         <Link to="/"><button onClick={()=> auth.signOut()} className='profileScreen__signOut'>Sign Out</button></Link>
 
                     </div>

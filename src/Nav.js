@@ -11,6 +11,7 @@ import {
   addGptResult,
   addGptResultBtn,
 } from "./features/gptSlice";
+import HamburgerProfile from "./components/HamburgerProfile";
 
 const Nav = () => {
   const dispatch = useDispatch();
@@ -113,6 +114,15 @@ const Nav = () => {
           )}
 
         </div>
+        <div class='menu-button'>
+          <input className="md:hidden" type="checkbox" />
+          <span className="line"></span>
+          <span className="line"></span>
+          <span className="line"></span>
+          <div className="md:hidden menu-container">
+            <HamburgerProfile />
+          </div>
+        </div>
         <div className="nav__search--container">
             {
               <button
@@ -138,12 +148,12 @@ const Nav = () => {
               }nav__search--cross fixed h-14 right-64`}
               onClick={(e) => handleClear(e)}
             >
-              <span class="material-symbols-outlined text-white">close</span>
+              <span class="hidden material-symbols-outlined md:block text-white">close</span>
             </button>
             <button
               onClick={() => handleGptSearch()}
               disabled={!searchBar?.current?.value}
-              className="nav__gptBtn fixed right-28 text-white h-12 disabled:bg-slate-500"
+              className="nav__gptBtn md:fixed md:right-28 text-white h-12 disabled:bg-slate-500"
             >
               GPT Search
             </button>

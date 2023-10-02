@@ -47,14 +47,6 @@ const LoginScreen = () => {
         </div>
         <div className="loginScreen__partitionLine"></div>
       </div>
-      <div className="loginScreen__section loginScreen__section--firstSection">
-            <FirstSection />
-            <div className="loginScreen__partitionLine"></div>
-      </div>
-      <div className="loginScreen__section loginScreen__section--secondSection">
-        <SecondSection />
-        <div className="loginScreen__partitionLine"></div>
-      </div>
     </div>
   );
 };

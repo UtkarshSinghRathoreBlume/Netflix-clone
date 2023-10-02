@@ -37,7 +37,7 @@ const Row = ({title, fetchUrl, isLargeRow=false}) => {
                     ))}
                 </div>
 
-            </> : <Shimmer />
+            </> : <Shimmer className="pt-36" />
         }
     </div>
   )

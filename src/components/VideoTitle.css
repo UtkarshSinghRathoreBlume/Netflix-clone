@@ -50,3 +50,18 @@
     max-width: 360px;
     /* height: 80px; */
 }
+
+@media (max-width: 640px) {
+    .banner__description {
+        display: none;
+    }
+
+    .banner__title {
+        font-size: 20px;
+    }
+
+    .banner__button > button {
+        padding: 2px 15px;
+        font-size: 14px;
+    }
+}
