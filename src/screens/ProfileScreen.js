@@ -32,7 +32,7 @@ const ProfileScreen = () => {
                 <div className='profileScreen__details'>
                     <h2>{user.email}</h2>
                     <div className='profileScreen__plans'>
-                    <h3>Plans : {subscription?.role.toUpperCase()}</h3>
+                    <h3>Plans : {subscription?.role ? subscription?.role?.toUpperCase() : "No Plan Selected"}</h3>
                     <PlansScreen className="plansScreen__container"/>
                         <Link to="/"><button onClick={()=> auth.signOut()} className='profileScreen__signOut'>Sign Out</button></Link>
 
